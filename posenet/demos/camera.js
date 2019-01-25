@@ -20,6 +20,8 @@ import Stats from 'stats.js';
 
 import {drawBoundingBox, drawKeypoints, drawSkeleton} from './demo_util';
 
+// var frechetDistance= require('./frechetDistance.js');
+
 const videoWidth = 600;
 const videoHeight = 500;
 const stats = new Stats();
@@ -263,6 +265,8 @@ function detectPoseInRealTime(video, net) {
     // and draw the resulting skeleton and keypoints if over certain confidence
     // scores
     poses.forEach(({score, keypoints}) => {
+    	proccessMatch(keypoints);
+    	
       if (score >= minPoseConfidence) {
         if (guiState.output.showPoints) {
           drawKeypoints(keypoints, minPartConfidence, ctx);
@@ -290,6 +294,7 @@ function detectPoseInRealTime(video, net) {
  * available camera devices, and setting off the detectPoseInRealTime function.
  */
 export async function bindPage() {
+	console.log('bindPage');
   // Load the PoseNet model weights with architecture 0.75
   const net = await posenet.load(0.75);
 

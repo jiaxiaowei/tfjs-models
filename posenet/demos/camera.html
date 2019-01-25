@@ -33,8 +33,10 @@
     <div id="loading">
         Loading the model...
     </div>
-
-    <div id='main' style='display:none'>
+	<table>
+	<tr>
+	<td>
+    <div id='main' style='display:none; float:left; width:50%;'>
         <video id="video" playsinline style=" -moz-transform: scaleX(-1);
         -o-transform: scaleX(-1);
         -webkit-transform: scaleX(-1);
@@ -42,9 +44,41 @@
         display: none;
         ">
         </video>
-        <canvas id="output" />
+        <canvas id="output" ></canvas>
     </div>
-    <div class="footer">
+    </td>
+    <td>
+    	<div><input type="checkbox" name="checkPoints" value="0">nose</input></div>
+    	<div><input type="checkbox" name="checkPoints" value="1">leftEye</input></div>
+    	<div><input type="checkbox" name="checkPoints" value="2">rightEye</input></div>
+    	<div><input type="checkbox" name="checkPoints" value="3">leftEar</input></div>
+    	<div><input type="checkbox" name="checkPoints" value="4">rightEar</input></div>
+    	<div><input type="checkbox" name="checkPoints" value="5">leftShoulder</input></div>
+    	<div><input type="checkbox" name="checkPoints" value="6">rightShoulder</input></div>
+    	<div><input type="checkbox" name="checkPoints" value="7">leftElbow</input></div>
+    	<div><input type="checkbox" name="checkPoints" value="8">rightElbow</input></div>
+    	<div><input type="checkbox" name="checkPoints" value="9">leftWrist</input></div>
+    	<div><input type="checkbox" name="checkPoints" value="10">rightWrist</input></div>
+    	<div><input type="checkbox" name="checkPoints" value="11">leftHip</input></div>
+    	<div><input type="checkbox" name="checkPoints" value="12">rightHip</input></div>
+    	<div><input type="checkbox" name="checkPoints" value="13">leftKnee</input></div>
+    	<div><input type="checkbox" name="checkPoints" value="14">rightKnee</input></div>
+    	<div><input type="checkbox" name="checkPoints" value="15">leftAnkle</input></div>
+    	<div><input type="checkbox" name="checkPoints" value="16">rightAnkle</input></div>
+    	<div><label>偏差: </label><input type="text" id="deviation" value="0.005"></input></div>
+    	<div><button onclick="saveBase()">保存基准</button></div>
+   	</td>
+   	</tr>
+   	<tr>
+	<td><div><canvas id="baseCanvas"></canvas></div>
+	</td>
+    <td><div><canvas id="matchCanvas"></canvas></div>
+    </td>
+    </tr>
+    </table>
+   	
+   	
+    <div class="">
         <div class="footer-text">
             <p>
                 PoseNet runs with either a <strong>single-pose</strong> or <strong>multi-pose</strong> detection algorithm. The single person pose detector is faster and more accurate but requires only one subject present in the image.
@@ -54,6 +88,9 @@
         </div>
     </div>
     <script src="camera.js"></script>
+    <script src="frechetDistance.js"></script>
+	<script src="tfjs-models.posenet.match.js"></script>
+
 </body>
 
 </html>

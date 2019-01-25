@@ -47,6 +47,13 @@
     }
   },
   "eslintIgnore": [
-    "dist/"
-  ]
+    "dist/","frechetDistance.js",
+    "tfjs-models.posenet.match.js"
+  ],
+  "babel": {
+    "ignore": [
+    	"frechetDistance.js",
+    	"tfjs-models.posenet.match.js"
+  	]
+  }
 }
